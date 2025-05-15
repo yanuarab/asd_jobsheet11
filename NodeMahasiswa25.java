@@ -7,3 +7,4 @@ public class NodeMahasiswa25 {
         this.next = next;
     }
 }
+

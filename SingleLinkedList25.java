@@ -16,7 +16,7 @@ public class SingleLinkedList25 {
             }
             System.out.println("");
         } else {
-            System.out.println("Linked List Kosong");
+            System.out.println("Linked list kosong");
         }
     }
 
@@ -60,7 +60,7 @@ public class SingleLinkedList25 {
 
     public void insertAt(int index, Mahasiswa25 input) {
         if (index < 0) {
-            System.out.println("Indeks salah");
+            System.out.println("indeks salah");
         } else if (index == 0) {
             addFirst(input);
         } else {
@@ -75,6 +75,7 @@ public class SingleLinkedList25 {
         }
     }
 
+    // Method untuk mendapatkan data berdasarkan index
     public void getData(int index) {
         NodeMahasiswa25 tmp = head;
         for (int i = 0; i < index; i++) {
@@ -83,6 +84,7 @@ public class SingleLinkedList25 {
         tmp.data.tampilInformasi();
     }
 
+    // Method untuk mencari index berdasarkan nama (key)
     public int indexOf(String key) {
         NodeMahasiswa25 tmp = head;
         int index = 0;
@@ -97,21 +99,25 @@ public class SingleLinkedList25 {
         }
     }
 
+    // Method untuk menghapus elemen pertama
     public void removeFirst() {
         if (isEmpty()) {
             System.out.println("Linked List masih Kosong, tidak dapat dihapus!");
-        } else if (head.next == null) {
-            head = tail = null;
+        } else if (head == tail) {
+            head = null;
+            tail = null;
         } else {
             head = head.next;
         }
     }
 
+    // Method untuk menghapus elemen terakhir
     public void removeLast() {
         if (isEmpty()) {
             System.out.println("Linked List masih Kosong, tidak dapat dihapus!");
         } else if (head == tail) {
-            head = tail = null;
+            head = null;
+            tail = null;
         } else {
             NodeMahasiswa25 temp = head;
             while (temp.next != tail) {
@@ -122,28 +128,7 @@ public class SingleLinkedList25 {
         }
     }
 
-    public void remove(String key) {
-        if (isEmpty()) {
-            System.out.println("Linked List masih Kosong, tidak dapat dihapus!");
-        } else {
-            NodeMahasiswa25 temp = head;
-            while (temp != null) {
-                if (temp.data.nama.equalsIgnoreCase(key) && temp == head) {
-                    this.removeFirst();
-                    break;
-                } else if (temp.next != null && temp.next.data.nama.equalsIgnoreCase(key)) {
-                    temp.next = temp.next.next;
-
-                    if (temp.next == null) {
-                        tail = temp;
-                    }
-                    break;
-                }
-                temp = temp.next;
-            }
-        }
-    }
-
+    // Method untuk menghapus node pada index tertentu
     public void removeAt(int index) {
         if (index == 0) {
             removeFirst();
